@@ -42,7 +42,7 @@ public class IoTServiceImpl implements IoTService {
     public TempDto getTemp(Integer id) {
         final MinMaxDob minMaxDob = minMaxDobRepository.findById(id).orElse(new MinMaxDob(id));
         final TemperaturaVlaga temperaturaVlaga = temperaturaVlagaRepository.findFirstBySensorIdOrderByVrijemeDesc(id);
-        final List<TemperaturaVlaga> povijest = temperaturaVlagaRepository.findBySensorIdOrderByVrijemeAsc(id);
+        final List<TemperaturaVlaga> povijest = temperaturaVlagaRepository.findPovijestSenzora(id);
         final TempDto tempDto = mapper.map(minMaxDob, temperaturaVlaga, povijest);
         minMaxDobRepository.save(minMaxDob);
         return tempDto;

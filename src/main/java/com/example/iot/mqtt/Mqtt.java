@@ -17,7 +17,6 @@ public class Mqtt implements Runnable {
 
     @Override
     public void run() {
-        System.out.println("Unutra");
         String broker = "tcp://test.mosquitto.org:1883";
         String clientid = "controler" + sensorId;
         int qos = 0;
@@ -47,7 +46,6 @@ public class Mqtt implements Runnable {
             });
             client.connect(options);
             client.subscribe("pilici/" + sensorId + "/trenutneVrijednosti", qos);
-            System.out.println("Klijent je povezan:" + client.isConnected());
         } catch (Exception e) {
             e.printStackTrace();
         }
