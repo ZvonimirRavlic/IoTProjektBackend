@@ -50,7 +50,7 @@ public class IoTServiceImpl implements IoTService {
 
     @Override
     public TempDto updateTemp(Integer id, TempUpdate tempUpdate) {
-        if (tempUpdate.getMinTemperatura() > tempUpdate.maxTemperatura) {
+        if (tempUpdate.getMinTemperatura() > tempUpdate.getMaxTemperatura()) {
             throw new IllegalArgumentException("Minimalna temperatura veca od maksimalne");
         }
         final MinMaxDob minMaxDob = minMaxDobRepository.findById(id).orElse(new MinMaxDob(id));

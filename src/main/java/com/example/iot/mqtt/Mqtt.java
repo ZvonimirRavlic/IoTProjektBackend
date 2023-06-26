@@ -24,8 +24,8 @@ public class Mqtt implements Runnable {
         try {
             MqttClient client = new MqttClient(broker, clientid, new MemoryPersistence());
             MqttConnectOptions options = new MqttConnectOptions();
-            options.setConnectionTimeout(60);
-            options.setKeepAliveInterval(60);
+            options.setConnectionTimeout(6000000);
+            options.setKeepAliveInterval(6000000);
             client.setCallback(new MqttCallback() {
 
                 public void connectionLost(Throwable cause) {
